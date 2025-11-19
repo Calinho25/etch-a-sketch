@@ -1,17 +1,24 @@
 .container{
-    width: 160px;
-    height: 160px;
+    margin-left: 25px;
+    width: 500px;
+    height: 500px;
     display: flex;
     border: 1px solid black;
-    /* ensures the divs break onto a new lone when they have filled the space */ 
+    /* ensures the divs break onto a new line when they have filled the space */ 
     flex-wrap: wrap;
 }
+/*ensures the width includes the border so to not mess up measurements */
+* {
+    box-sizing: border-box;
+}
+
 .squares{
-    /* because the border totals 1px we use 9px sizes to equal 10 */
-    width: 9px;
-    height: 9px;
+    aspect-ratio: 1/1;
     border: 0.5px solid black;
 }
 .colour{
     background-color: black;
+}
+input {
+    margin: 25px;
 }

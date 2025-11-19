@@ -7,19 +7,34 @@
      <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <input type="text">
+    <button>Generate</button>
     <div class="container"></div>
-    <!--make div children of squares using js-->
+    
     <script>
-        const gridSquares = []
-        /* allows for a 16x16 grid */
-            for (let index = 0; index < 256; index++) {
+        let input = document.querySelector("input")
+        let size = "";
+        let button = document.querySelector("button")
+        button.addEventListener("click",(event)=>{
+            let container = document.querySelector(".container")
+            /* this resets the grid each time */
+            container.innerHTML = "";
+            size = input.value*input.value;
+            console.log("Size is now", size);
+        console.log (size);
+        let gridSquares = []
+        /*make div children of squares*/
+            for (let index = 0; index < size; index++) {
             let container = document.querySelector(".container")
               let squares = document.createElement("div");
               squares.className = "squares";
+              /* determines width based off of the container width divided by input value*/
+              /* flex grow 0 shrink 0 100% divided by the input */
+              squares.style.flex = `0 0 calc(100% / ${input.value})`;
               container.appendChild(squares);
               squares.addEventListener("mouseover", (event)=>{
             squares.classList.add("colour");
-              })};
+              })}});;
     </script>
 </body>
 </html>
