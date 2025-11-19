@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+     <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container"></div>
+    <!--make div children of squares using js-->
+    <script>
+        const gridSquares = []
+        /* allows for a 16x16 grid */
+            for (let index = 0; index < 256; index++) {
+            let container = document.querySelector(".container")
+              let squares = document.createElement("div");
+              squares.className = "squares";
+              container.appendChild(squares);
+              squares.addEventListener("mouseover", (event)=>{
+            squares.classList.add("colour");
+              })};
+    </script>
+</body>
+</html>

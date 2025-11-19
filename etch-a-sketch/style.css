@@ -1,0 +1,17 @@
+.container{
+    width: 160px;
+    height: 160px;
+    display: flex;
+    border: 1px solid black;
+    /* ensures the divs break onto a new lone when they have filled the space */ 
+    flex-wrap: wrap;
+}
+.squares{
+    /* because the border totals 1px we use 9px sizes to equal 10 */
+    width: 9px;
+    height: 9px;
+    border: 0.5px solid black;
+}
+.colour{
+    background-color: black;
+}
