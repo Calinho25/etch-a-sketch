@@ -9,6 +9,9 @@
 <body>
     <input type="text">
     <button>Generate</button>
+    <!--checkbox seemed the easiest way to add a toggle-->
+    <input type="checkbox" id="myToggle">
+    <label for="myToggle">Multicolour</label>
     <div class="container"></div>
     
     <script>
@@ -32,9 +35,24 @@
               /* flex grow 0 shrink 0 100% divided by the input */
               squares.style.flex = `0 0 calc(100% / ${input.value})`;
               container.appendChild(squares);
+              /* split the colour into rgb numbers which range from 1-256*/
+              function randomColour(){
+                var r = Math.floor(Math.random()*256)
+                var g = Math.floor(Math.random()*256)
+                var b = Math.floor(Math.random()*256)
+                let rgb = 'rgb(' + r + ',' + g + ',' + b + ')';
+                return rgb;
+              }
+              let multicolour = document.querySelector("#myToggle")
               squares.addEventListener("mouseover", (event)=>{
-            squares.classList.add("colour");
-              })}});;
+                if (multicolour.checked) {
+                    squares.style.backgroundColor = randomColour();
+                } else {
+                    /* this removes the coloured square so the black can go over it*/
+                    squares.style.backgroundColor = "";
+                    squares.classList.add("colour");
+                }
+              })}});
     </script>
 </body>
 </html>
