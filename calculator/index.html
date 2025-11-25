@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class = "calculator">
+        <div class = "screen"></div>
+        <div class = "buttons">
+             <div class = "numbers">
+                 <button value="1">1</button>
+                 <button value="2">2</button>
+                 <button value="3">3</button>
+                 <button value="4">4</button>
+                 <button value="5">5</button>
+                 <button value="6">6</button>
+                 <button value="7">7</button>
+                 <button value="8">8</button>
+                 <button value="9">9</button>
+                 <button value="0">0</button>
+             </div>
+             <div class = "signs">
+                 <button value="+">+</button>
+                 <button value="-">-</button>
+                 <button value="*">*</button>
+                 <button value="/">/</button>
+             </div>
+             <div class = "equals">
+                 <button value="=">=</button>
+             </div> 
+        </div>
+    </div>
+    <script>
+        /*store each number/operator in its own variable*/
+        let equals = document.querySelector(".equals button");
+        let screen = document.querySelector(".screen")
+        let numbers = document.querySelector(".numbers")
+        let signs = document.querySelector(".signs")
+        let num1 = "";
+        let num2 ="";
+        let int = "";
+        let shouldResetScreen = false;
+        function operate(operator, a, b) {
+            if (operator === "-") return a - b;
+            if (operator === "*") return a * b;
+            if (operator === "/") return a / b;
+            if (operator === "+") return a + b;
+        }
+        numbers.addEventListener("click",function(e){
+            if (shouldResetScreen == true) {
+            screen.textContent = "";
+            shouldResetScreen = false
+            }
+            screen.textContent += e.target.value
+        })
+        signs.addEventListener("click", function(e){
+            if (int === ""){
+            num1 = Number(screen.textContent)
+            int = e.target.value;
+            shouldResetScreen = true;
+            }else{
+               num2 = Number(screen.textContent);
+                let result = operate(int, num1, num2);
+                screen.textContent = result;
+                int = e.target.value;
+                num1 = result;
+                shouldResetScreen = true;}})
+        equals.addEventListener("click",function(e)   
+            { 
+                num2 = Number(screen.textContent);
+                let result = operate(int, num1, num2);
+                screen.textContent = result;
+                num1 = result;
+                shouldResetScreen = true;
+                int = "";
+            })
+
+    </script>
+</body>
+</html>
